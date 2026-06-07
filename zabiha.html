@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zabiha Burger & Fries — Halal. Flame-Broiled. Real.</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --char: #1a0a00;
+      --flame: #e84a12;
+      --gold: #f5a623;
+      --cream: #fdf6ec;
+      --smoke: #2b1d0e;
+      --text: #3a2010;
+      --muted: #8c6a50;
+      --white: #fffef9;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--char);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(26, 10, 0, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(232, 74, 18, 0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+    }
+
+    .nav-logo span {
+      color: var(--flame);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    nav ul a:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: var(--flame);
+      color: var(--white) !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 2px;
+      opacity: 1 !important;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: #c93d0a !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 4rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(232, 74, 18, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 30% 80%, rgba(245, 166, 35, 0.06) 0%, transparent 60%),
+        linear-gradient(160deg, #1a0a00 0%, #2b1d0e 50%, #1a0a00 100%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(232, 74, 18, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 74, 18, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232, 74, 18, 0.15);
+      border: 1px solid rgba(232, 74, 18, 0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--flame);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 12vw, 10rem);
+      line-height: 0.88;
+      letter-spacing: -2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      color: var(--flame);
+      font-style: normal;
+    }
+
+    .hero h1 .amp {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255, 254, 249, 0.65);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--flame);
+      color: var(--white);
+      padding: 1rem 2.2rem;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #c93d0a;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 254, 249, 0.3);
+      color: var(--white);
+      padding: 1rem 2.2rem;
+      border-radius: 2px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-visual {
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 28vw;
+      opacity: 0.04;
+      line-height: 1;
+      user-select: none;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: -10px;
+      color: var(--flame);
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      right: 4rem;
+      display: flex;
+      gap: 3rem;
+    }
+
+    .stat {
+      text-align: right;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* SECTION BASE */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--flame);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -1px;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--smoke);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .about-text p {
+      color: rgba(255, 254, 249, 0.7);
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .about-card {
+      background: rgba(255, 254, 249, 0.04);
+      border: 1px solid rgba(232, 74, 18, 0.2);
+      padding: 1.5rem;
+      border-radius: 4px;
+    }
+
+    .about-card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .about-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* MENU */
+    .menu {
+      background: var(--char);
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+
+    .menu-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 3rem;
+    }
+
+    .tab {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: 0.7rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .tab.active {
+      color: var(--flame);
+      border-bottom-color: var(--flame);
+    }
+
+    .tab:hover {
+      color: var(--white);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .menu-card {
+      background: var(--smoke);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(232, 74, 18, 0.4);
+    }
+
+    .menu-card-img {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .menu-card-body {
+      padding: 1.2rem;
+    }
+
+    .menu-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .menu-card-price {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .menu-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .menu-card-badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: rgba(232, 74, 18, 0.15);
+      border: 1px solid rgba(232, 74, 18, 0.3);
+      color: var(--flame);
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 100px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .badge-popular {
+      background: rgba(245, 166, 35, 0.15);
+      border-color: rgba(245, 166, 35, 0.3);
+      color: var(--gold);
+    }
+
+    .menu-section {
+      display: block;
+    }
+
+    .menu-section.hidden {
+      display: none;
+    }
+
+    /* HALAL STRIP */
+    .halal-strip {
+      background: var(--flame);
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .halal-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.05) 40px, rgba(0, 0, 0, 0.05) 41px);
+    }
+
+    .halal-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .halal-divider {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* LOCATIONS */
+    .locations {
+      background: var(--smoke);
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .location-card {
+      background: rgba(255, 254, 249, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+
+    .location-card:hover {
+      border-color: rgba(232, 74, 18, 0.4);
+    }
+
+    .location-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: rgba(232, 74, 18, 0.2);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .location-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-card address {
+      font-style: normal;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+
+    .location-hours {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .location-hours p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .location-hours strong {
+      color: var(--gold);
+    }
+
+    .open-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #10b981;
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ORDER CTA */
+    .order-cta {
+      background: var(--char);
+      text-align: center;
+      padding: 8rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .order-cta::before {
+      content: 'ORDER';
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 25vw;
+      color: rgba(232, 74, 18, 0.04);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      letter-spacing: -5px;
+    }
+
+    .order-cta .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .order-cta p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      max-width: 400px;
+      margin-inline: auto;
+    }
+
+    .order-platforms {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .platform-btn {
+      background: rgba(255, 254, 249, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      padding: 0.9rem 1.8rem;
+      border-radius: 2px;
+      font-weight: 500;
+      font-size: 0.88rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .platform-btn:hover {
+      background: rgba(232, 74, 18, 0.15);
+      border-color: rgba(232, 74, 18, 0.4);
+      color: var(--gold);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0e0600;
+      padding: 3rem 4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: gap;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .footer-logo span {
+      color: var(--flame);
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-halal {
+      font-size: 0.75rem;
+      color: var(--flame);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #cart-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 14rem;
+      z-index: 200;
+      background: var(--flame);
+      color: white;
+      border: none;
+      border-radius: 2px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    #cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -380px;
+      width: 360px;
+      height: 100vh;
+      background: var(--smoke);
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2rem;
+      z-index: 300;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      overflow-y: auto;
+    }
+
+    #cart-sidebar.open {
+      right: 0;
+    }
+
+    #cart-sidebar h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+      gap: 0.5rem;
+    }
+
+    .cart-item button {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .cart-item button:hover {
+      color: var(--flame);
+    }
+
+    #cart-footer {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #cart-footer strong {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    #checkout-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--flame);
+      color: white;
+      border: none;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    #checkout-btn:hover {
+      background: #c93d0a;
+    }
+
+    #cart-empty {
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .add-to-cart-btn {
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.7rem;
+      background: var(--flame);
+      color: white;
+      border: none;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .add-to-cart-btn:hover {
+      background: #c93d0a;
+    }
+    @media (max-width: 768px) {
+  nav {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  nav ul {
+    gap: 1rem;
+  }
+  nav ul a {
+    font-size: 0.75rem;
+  }
+  #cart-toggle {
+    position: fixed; top: auto; bottom: 1.5rem; right: 1.5rem;
+    z-index: 200; border-radius: 100px;
+    padding: 0.8rem 1.4rem;
+    box-shadow: 0 4px 20px rgba(232,74,18,0.4);
+  }
+  #cart-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+  .hero {
+    padding: 6rem 1.5rem 2rem;
+    min-height: 100vh;
+  }
+  .hero h1 {
+    font-size: 5rem;
+  }
+  .hero-stats {
+    position: static;
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-visual {
+    display: none;
+  }
+  .hero-actions {
+    flex-direction: column;
+  }
+  .btn-primary, .btn-outline {
+    text-align: center;
+    width: 100%;
+  }
+  section {
+    padding: 4rem 1.5rem;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .about-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .menu-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .menu-tabs {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    gap: 0;
+  }
+  .tab {
+    padding: 0.7rem 1rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+  .locations-grid {
+    grid-template-columns: 1fr;
+  }
+  .halal-strip {
+    padding: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .halal-divider {
+    display: none;
+  }
+  .halal-item {
+    font-size: 0.78rem;
+  }
+  .order-platforms {
+    flex-direction: column;
+    align-items: center;
+  }
+  .platform-btn {
+    width: 100%;
+    text-align: center;
+  }
+  footer {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .footer-logo {
+    text-align: center;
+  }
+  footer p, .footer-halal {
+    text-align: center;
+  }
+  .hero-badge {
+    font-size: 0.68rem;
+  }
+  .order-cta {
+    padding: 5rem 1.5rem;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <button id="cart-toggle" onclick="document.getElementById('cart-sidebar').classList.toggle('open')">
+  🛒 Cart (<span id="cart-count">0</span>)
+</button>
+
+<div id="cart-sidebar">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h3>Your Order</h3>
+    <button onclick="document.getElementById('cart-sidebar').classList.remove('open')"
+      style="background:none; border:none; color:var(--muted); font-size:1.3rem; cursor:pointer;">✕</button>
+  </div>
+  <div id="cart-items">
+    <p id="cart-empty">Your cart is empty.</p>
+  </div>
+  <div id="cart-footer">
+    <strong>Total: <span id="cart-total">$0.00</span></strong>
+    <button id="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+  <!-- NAV -->
+  <nav>
+  <div class="nav-logo">Zabiha <span>B&F</span></div>
+  <ul style="margin-left: 0; margin-right: 20px;">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#locations">Locations</a></li>
+  </ul>
+  <a href="#order" class="nav-cta" style="text-decoration:none; color:white; padding: 0.6rem 1.4rem; background:var(--flame); border-radius:2px; font-weight:600; font-size:0.85rem; letter-spacing:1px; text-transform:uppercase;">Order Now</a>
+</nav>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        100% Zabiha Halal Certified
+      </div>
+      <h1>
+        BURGER<br>
+        <em>&</em> <span class="amp">FRIES</span>
+      </h1>
+      <p class="hero-sub">
+        Flame-broiled to perfection. Real beef. Real flavor. Halal-certified and open till 2AM — because good food
+        doesn't have a curfew.
+      </p>
+      <div class="hero-actions">
+        <a href="#order" class="btn-primary">Order Now</a>
+        <a href="#menu" class="btn-outline">View Menu</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">🍔</div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">2AM</div>
+        <div class="stat-label">Open Till</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Locations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Halal</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAL STRIP -->
+  <div class="halal-strip">
+    <div class="halal-item">🔥 Flame-Broiled Daily</div>
+    <div class="halal-divider"></div>
+    <div class="halal-item">✅ Zabiha Certified</div>
+    <div class="halal-divider"></div>
+    <div class="halal-item">🌙 Halal Ingredients</div>
+    <div class="halal-divider"></div>
+    <div class="halal-item">🕐 Open 11AM – 2AM</div>
+    <div class="halal-divider"></div>
+    <div class="halal-item">🚚 Delivery Available</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-label">Our Story</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2 class="section-title">BUILT ON<br><span style="color:var(--flame)">REAL</span> FIRE</h2>
+        <p>Zabiha Burger & Fries was born from a simple belief: halal food should never mean settling for less. Every
+          patty is charbroiled over an open flame, every bun is toasted fresh, and every ingredient is zabiha-certified
+          halal.</p>
+        <p>We're New York's late-night answer to the halal burger craving — serving Flushing and Brooklyn till 2AM,
+          seven days a week. No compromises. Just real burgers, done right.</p>
+      </div>
+      <div class="about-cards reveal">
+        <div class="about-card">
+          <div class="about-card-icon">🔥</div>
+          <h4>Flame-Broiled</h4>
+          <p>Every patty cooked over open flame for that real smoky char flavor.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🌙</div>
+          <h4>Zabiha Halal</h4>
+          <p>Certified zabiha halal — not just "halal-style." Every ingredient verified.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">⏰</div>
+          <h4>Late Night</h4>
+          <p>Open 7 days a week, 11AM to 2AM. There when you need us most.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🍟</div>
+          <h4>Fresh Sides</h4>
+          <p>Hand-cut fries, waffle fries, onion rings — all made to order.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="menu-header">
+      <div>
+        <div class="section-label">What We Serve</div>
+        <h2 class="section-title">THE MENU</h2>
+      </div>
+    </div>
+
+    <div class="menu-tabs">
+      <button class="tab active" onclick="showTab('burgers', this)">Burgers</button>
+      <button class="tab" onclick="showTab('chicken', this)">Chicken</button>
+      <button class="tab" onclick="showTab('sides', this)">Sides</button>
+      <button class="tab" onclick="showTab('desserts', this)">Desserts</button>
+    </div>
+
+    <!-- Burgers -->
+    <div class="menu-section" id="burgers">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🍔</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Flame Broiled Single</h3>
+              <span class="menu-card-price">$9.99</span>
+            </div>
+            <p>Juicy charbroiled patty, crisp lettuce, fresh tomato, pickles, and our signature sauce on a toasted bun.
+            </p>
+            <span class="menu-card-badge badge-popular">⭐ Most Ordered</span>
+        <button class="add-to-cart-btn" onclick="addToCart('Flame Broiled Single', 9.99)">+ Add to Cart</button>
+        </div>
+      </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🍔</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Flame Broiled Double</h3>
+              <span class="menu-card-price">$13.99</span>
+            </div>
+            <p>Two flame-broiled patties stacked with melty cheese, lettuce, tomato, onion, pickles, and house sauce.
+            </p>
+            <button class="add-to-cart-btn" onclick="addToCart('Flame Broiled Double', 13.99)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🧀</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Chopped Cheese Bun</h3>
+              <span class="menu-card-price">$11.49</span>
+            </div>
+            <p>Seasoned beef chopped with melty cheese, served on a soft bun. NYC street food done halal.</p>
+            <span class="menu-card-badge">🗽 NYC Classic</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Chopped Cheese Bun', 11.49)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🌯</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Chopped Cheese Hero</h3>
+              <span class="menu-card-price">$12.49</span>
+            </div>
+            <p>The full chopped cheese experience on a hero roll — more meat, more cheese, more flavor.</p>
+            <span class="menu-card-badge">💪 Go Big</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Chopped Cheese Hero', 12.49)">+ Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chicken -->
+    <div class="menu-section hidden" id="chicken">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🍗</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Hand Breaded Original</h3>
+              <span class="menu-card-price">$9.49</span>
+            </div>
+            <p>Tender breaded chicken sandwich — crispy on the outside, soft and juicy within.</p>
+            <span class="menu-card-badge badge-popular">⭐ Fan Fave</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Hand Breaded Original', 9.49)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🌶️</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Hand Breaded Spicy</h3>
+              <span class="menu-card-price">$9.99</span>
+            </div>
+            <p>Same crispy breaded exterior, turned up with a heat that builds and satisfies.</p>
+            <span class="menu-card-badge">🔥 Spicy</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Hand Breaded Spicy', 9.99)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🍗</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Grilled Chicken</h3>
+              <span class="menu-card-price">$10.49</span>
+            </div>
+            <p>Juicy grilled chicken breast, flame-touched and served fresh on a toasted bun.</p>
+            <span class="menu-card-badge">💚 Lighter Option</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Grilled Chicken', 10.49)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🐟</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Fish Sandwich</h3>
+              <span class="menu-card-price">$8.99</span>
+            </div>
+            <p>Flaky fish in a crispy breaded coating, served on a soft bun with classic fixings.</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Fish Sandwich', 8.99)">+ Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sides -->
+    <div class="menu-section hidden" id="sides">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🍟</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Hand-Cut Fries</h3>
+              <span class="menu-card-price">$3.99</span>
+            </div>
+            <p>Crispy, hand-cut fries cooked to golden perfection. The classic side, done right.</p>
+            <span class="menu-card-badge badge-popular">⭐ Most Ordered</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Hand-Cut Fries', 3.99)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🧇</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Waffle Fries</h3>
+              <span class="menu-card-price">$4.49</span>
+            </div>
+            <p>Crispy waffle-cut fries — more surface area, more crunch, perfect for dipping.</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Waffle Fries', 4.49)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🧅</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Onion Rings</h3>
+              <span class="menu-card-price">$4.99</span>
+            </div>
+            <p>Crispy and golden irresistible onion rings — crunchy outside, sweet inside.</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Onion Rings', 4.99)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🧀</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Mozzarella Sticks</h3>
+              <span class="menu-card-price">$5.49</span>
+            </div>
+            <p>Crunchy and golden with melted mozzarella in every bite. Served with marinara.</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Mozzarella Sticks', 5.49)">+ Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desserts -->
+    <div class="menu-section hidden" id="desserts">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🥤</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Classic Milkshake</h3>
+              <span class="menu-card-price">$6.99</span>
+            </div>
+            <p>Thick, creamy milkshake in chocolate, vanilla, strawberry, or Oreo. Blended fresh.</p>
+            <span class="menu-card-badge badge-popular">⭐ Crowd Pleaser</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Classic Milkshake', 6.99)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🍦</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Ice Cream (Medium)</h3>
+              <span class="menu-card-price">$3.49</span>
+            </div>
+            <p>Creamy ice cream in vanilla, chocolate, or strawberry. Classic and satisfying.</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Ice Cream (Medium)', 3.49)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🍨</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Ice Cream (Large)</h3>
+              <span class="menu-card-price">$4.99</span>
+            </div>
+            <p>A generous serving of your favorite ice cream flavors — go all out.</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Ice Cream (Large)', 4.99)">+ Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card-img">🎂</div>
+          <div class="menu-card-body">
+            <div class="menu-card-top">
+              <h3>Birthday Cake Shake</h3>
+              <span class="menu-card-price">$7.49</span>
+            </div>
+            <p>A festive birthday cake milkshake — sweet, creamy, and worth celebrating.</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Birthday Cake Shake', 7.49)">+ Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations" id="locations">
+    <div class="section-label">Find Us</div>
+    <h2 class="section-title">OUR<br><span style="color:var(--flame)">LOCATIONS</span></h2>
+    <div class="locations-grid">
+      <div class="location-card reveal">
+        <div class="location-num">01</div>
+        <h3>Flushing, Queens</h3>
+        <address>
+          4403 Kissena Blvd<br>
+          Flushing, NY 11355<br>
+          (347) 368-4297
+        </address>
+        <div class="location-hours">
+          <p>Hours: <strong>11:00 AM – 2:00 AM</strong></p>
+          <p>7 Days a Week</p>
+        </div>
+        <span class="open-badge">● Open Now</span>
+      </div>
+      <div class="location-card reveal">
+        <div class="location-num">02</div>
+        <h3>Coney Island Ave, Brooklyn</h3>
+        <address>
+          597 Coney Island Avenue<br>
+          Brooklyn, NY<br>
+          Call for info
+        </address>
+        <div class="location-hours">
+          <p>Hours: <strong>11:00 AM – 2:00 AM</strong></p>
+          <p>7 Days a Week</p>
+        </div>
+        <span class="open-badge">● Open Now</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER CTA -->
+  <section class="order-cta" id="order">
+    <div style="position:relative; z-index:2;">
+      <div class="section-label">Hungry Right Now?</div>
+      <h2 class="section-title">GET IT<br><span style="color:var(--flame)">DELIVERED</span></h2>
+      <p>Order on your favorite platform and get flame-broiled halal goodness at your door.</p>
+      <div class="order-platforms">
+        <a href="https://www.ubereats.com/store/zabiha-burger-&-fries/jiSb7x3DWbCYIaVHlS-cug" target="_blank"
+          class="platform-btn">Uber Eats</a>
+        <a href="https://www.doordash.com/business/zabiha-burger-&-fries-959130/" target="_blank"
+          class="platform-btn">DoorDash</a>
+        <a href="https://www.grubhub.com/restaurant/zabiha-burger-44-03-kissena-blvd-flushing/3003741" target="_blank"
+          class="platform-btn">Grubhub</a>
+        <a href="tel:3473684297" class="btn-primary">📞 Call to Order</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">Zabiha <span>B&F</span></div>
+      <p style="margin-top:0.4rem;">New York's Halal Flame-Broiled Burger Joint</p>
+    </div>
+    <div style="text-align:right;">
+      <div class="footer-halal">☪ Zabiha Certified Halal</div>
+      <p style="margin-top:0.4rem;">Flushing · Brooklyn · Open Till 2AM</p>
+      <p style="margin-top:0.2rem; font-size:0.72rem; color:#5a3d2b;">© 2025 Zabiha Burger & Fries</p>
+    </div>
+  </footer>
+
+  <script>
+    function showTab(id, el) {
+      document.querySelectorAll('.menu-section').forEach(s => s.classList.add('hidden'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(id).classList.remove('hidden');
+      el.classList.add('active');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    let cart = [];
+
+function addToCart(name, price) {
+  const existing = cart.find(item => item.name === name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+  updateCart();
+  document.getElementById('cart-sidebar').classList.add('open');
+}
+
+function removeFromCart(name) {
+  cart = cart.filter(item => item.name !== name);
+  updateCart();
+}
+
+function updateCart() {
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+
+  document.getElementById('cart-count').textContent = count;
+  document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+
+  const list = document.getElementById('cart-items');
+
+  if (cart.length === 0) {
+    list.innerHTML = '<p id="cart-empty">Your cart is empty.</p>';
+    return;
+  }
+
+  list.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <span style="flex:1;">${item.name}</span>
+      <span style="color:var(--gold); margin: 0 0.5rem;">x${item.qty}</span>
+      <span style="margin-right:0.5rem;">$${(item.price * item.qty).toFixed(2)}</span>
+      <button onclick="removeFromCart('${item.name}')">✕</button>
+    </div>
+  `).join('');
+  document.getElementById('checkout-btn').onclick = function() {
+  if (cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+
+  const orderSummary = cart.map(item =>
+    `${item.name} x${item.qty} — $${(item.price * item.qty).toFixed(2)}`
+  ).join('\n');
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  alert(`Order Summary:\n\n${orderSummary}\n\nTotal: $${total.toFixed(2)}\n\nThank you for your order! We'll have it ready soon.`);
+
+  cart = [];
+  updateCart();
+  document.getElementById('cart-sidebar').classList.remove('open');
+};
+document.getElementById('checkout-btn').onclick = function() {
+  if (cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+
+  const orderSummary = cart.map(item =>
+    `${item.name} x${item.qty} — $${(item.price * item.qty).toFixed(2)}`
+  ).join('\n');
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  alert(`Order Summary:\n\n${orderSummary}\n\nTotal: $${total.toFixed(2)}\n\nThank you for your order! We'll have it ready soon.`);
+
+  cart = [];
+  updateCart();
+  document.getElementById('cart-sidebar').classList.remove('open');
+};
+}
+  </script>
+</body>
+
+</html>
